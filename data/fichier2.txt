@@ -1,0 +1,1 @@
+Hadoop, a travers le calul distribue, permet de traiter des tas de donnees
