@@ -1,33 +1,34 @@
-# Configuration commune pour ne pas répéter le code
+# --- Configuration commune ---
 x-hadoop-common: &hadoop-common
   build: .
-  # On limite la mémoire Java à 800Mo pour laisser 200Mo au système (Total 1Go)
   environment:
     - HADOOP_HOME=/usr/local/hadoop
     - HADOOP_HEAPSIZE_MAX=800m
-  # C'est ici qu'on définit les limites physiques
   deploy:
     resources:
       limits:
-        cpus: '1.0'      # Max 1 coeur CPU par conteneur
-        memory: 1G       # Max 1 Go de RAM par conteneur
+        cpus: '1.0'
+        memory: 1G
       reservations:
-        memory: 512M     # Réserve garantie au démarrage
+        memory: 512M
+  networks:
+    - hadoop_network
 
+# --- Réseau ---
+networks:
+  hadoop_network:
+    name: hadoop
+    driver: bridge
+
+# --- Services ---
 services:
   hadoop-master:
     <<: *hadoop-common
     container_name: hadoop-master
     hostname: hadoop-master
     ports:
-      - "9870:9870" # HDFS UI
-      - "8088:8088" # YARN UI
-    command: ["sh", "-c", "service ssh start; tail -f /dev/null"]
-
-  hadoop-secondary:
-    <<: *hadoop-common
-    container_name: hadoop-secondary
-    hostname: hadoop-secondary
+      - "9870:9870"
+      - "8088:8088"
     command: ["sh", "-c", "service ssh start; tail -f /dev/null"]
 
   hadoop-worker1:

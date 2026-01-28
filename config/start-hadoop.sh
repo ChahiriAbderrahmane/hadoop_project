@@ -1,12 +1,11 @@
 #!/bin/bash
-# config/start-hadoop.sh
 
-echo "Démarrage de Hadoop..."
+echo -e "\n"
 
-# Démarrer HDFS
 $HADOOP_HOME/sbin/start-dfs.sh
 
-# Démarrer YARN
+echo -e "\n"
+
 $HADOOP_HOME/sbin/start-yarn.sh
 
-echo "Hadoop est lancé !"
+echo -e "\n"
