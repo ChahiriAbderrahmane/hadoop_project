@@ -11,6 +11,8 @@ The cluster is deployed on Ubuntu-based Docker containers and includes the follo
 * **DataNodes (x3)**: Data Storage.
 * **NodeManagers (x3)**: Task Execution.
 
+![Hadoop-cluster-architecture](assets/Hadoop-cluster.png)
+
 ## ✅ Cluster Status Verification
 
 Once the containers are launched and port conflicts resolved, here is the status of the services.
