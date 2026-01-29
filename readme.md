@@ -10,7 +10,6 @@ The cluster is deployed on Ubuntu-based Docker containers and includes the follo
 * **ResourceManager**: Resource Manager (YARN Master).
 * **DataNodes (x3)**: Data Storage.
 * **NodeManagers (x3)**: Task Execution.
-* **SecondaryNameNode**: Checkpointing for the NameNode.
 
 ## ✅ Cluster Status Verification
 
@@ -35,7 +34,7 @@ The goal of this test was to count word frequencies in a text file stored on HDF
 **Execution Command:**
 ```bash
 hadoop jar $HADOOP_HOME/share/hadoop/mapreduce/hadoop-mapreduce-examples-*.jar wordcount /input /output
-
+```
 
 **Result in YARN:**
 As shown in the screenshot below, the application was "SUBMITTED", accepted, and completed successfully ("FINISHED / SUCCEEDED").
